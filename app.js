@@ -17,7 +17,11 @@ const app = express();
 mongoose.connect('mongodb://localhost:27017/moviesdb', {});
 
 const allowedCors = [
-  'http://localhost:3000',
+  'http://movies-explorer.starikov.nomoredomains.work/',
+  'https://movies-explorer.starikov.nomoredomains.work/',
+  'http://api.movies-explorer.strkv.nomoredomains.work/',
+  'https://api.movies-explorer.strkv.nomoredomains.work/',
+  'localhost:3000',
 ];
 
 app.use((req, res, next) => {
