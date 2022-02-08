@@ -36,7 +36,8 @@ const createUser = (req, res, next) => {
               name, email,
             },
           });
-        });
+        })
+        .catch(next);
     })
     .catch(next);
 };
@@ -52,12 +53,10 @@ const updateProfile = (req, res, next) => {
     .orFail(new NotFoundError('Пользователь с указанным id не найден'))
     .then((user) => res.send(user))
     .catch((err) => {
-      if (err.name === 'CastError') {
-        throw new ValidationError('Передан некорректный id');
-      }
       if (err.name === 'ValidationError') {
         throw new ValidationError('Переданы некорректные данные при обновлении профиля');
       }
+      throw err;
     })
     .catch(next);
 };
