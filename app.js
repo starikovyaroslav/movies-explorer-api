@@ -9,12 +9,11 @@ const limiter = require('./middlewares/rateLimiter');
 const router = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const errorHandler = require('./middlewares/errorHandler');
-
-const { PORT = 3000 } = process.env;
+const { REAL_PORT, REAL_BASE } = require('./utils/config');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/moviesdb', {});
+mongoose.connect(REAL_BASE, {});
 
 const allowedCors = [
   'http://movies-explorer.starikov.nomoredomains.work/',
@@ -53,4 +52,4 @@ app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 
-app.listen(PORT);
+app.listen(REAL_PORT);
