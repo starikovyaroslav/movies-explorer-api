@@ -41,12 +41,12 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(requestLogger);
+app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cookieParser());
-app.use(requestLogger);
-app.use(limiter);
 app.use(router);
 app.use(errorLogger);
 app.use(errors());
