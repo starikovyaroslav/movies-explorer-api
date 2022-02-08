@@ -1,8 +1,17 @@
 const { Joi, celebrate } = require('celebrate');
+const validator = require('validator');
+
+const urlValidate = (url) => {
+  const result = validator.isURL(url);
+  if (!result) {
+    throw new Error('Введите URL');
+  }
+  return url;
+};
 
 const userValidation = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30).required(),
+    name: Joi.string().required().min(2).max(30),
     email: Joi.string().required().email(),
     password: Joi.string().required(),
   }),
@@ -36,9 +45,9 @@ const movieValidation = celebrate({
     duration: Joi.number().required(),
     year: Joi.string().required(),
     description: Joi.string().required(),
-    image: Joi.string().required(),
-    trailerLink: Joi.string().required(),
-    thumbnail: Joi.string().required(),
+    image: Joi.string().required().custom(urlValidate),
+    trailerLink: Joi.string().required().custom(urlValidate),
+    thumbnail: Joi.string().required().custom(urlValidate),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
   }),
