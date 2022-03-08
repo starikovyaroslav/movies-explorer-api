@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
@@ -13,14 +14,17 @@ const { REAL_PORT, REAL_BASE } = require('./utils/config');
 
 const app = express();
 
+app.use(cors({
+  origin: ['http://movies-explorer.starikov.nomoredomains.work', 'https://movies-explorer.starikov.nomoredomains.work', 'http://api.movies-explorer.strkv.nomoredomains.work', 'https://api.movies-explorer.strkv.nomoredomains.work', 'localhost:3000'],
+  allowedHeaders: ['Access-Control-Allow-Credentials', 'Access-Control-Allow-Origin', 'Content-Type'],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  credentials: true,
+}));
+
 mongoose.connect(REAL_BASE, {});
 
-const allowedCors = [
-  'http://movies-explorer.starikov.nomoredomains.work',
-  'https://movies-explorer.starikov.nomoredomains.work',
-  'http://api.movies-explorer.strkv.nomoredomains.work',
-  'https://api.movies-explorer.strkv.nomoredomains.work',
-  'localhost:3000',
+/* const allowedCors = [
+
 ];
 
 app.use((req, res, next) => {
@@ -39,7 +43,7 @@ app.use((req, res, next) => {
   }
 
   next();
-});
+}); */
 
 app.use(requestLogger);
 app.use(limiter);
