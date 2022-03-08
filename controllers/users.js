@@ -78,7 +78,7 @@ const login = (req, res, next) => {
         sameSite: 'none',
         secure: true,
       })
-        .send('Вы успешно авторизованы');
+        .send({ message: 'Вы успешно авторизованы' });
     })
     .catch(next);
 };
