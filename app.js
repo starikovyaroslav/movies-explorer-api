@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -14,14 +15,16 @@ const { REAL_PORT, REAL_BASE } = require('./utils/config');
 
 const app = express();
 
-app.use(cors({
+/* app.use(cors({
   origin: ['http://movies-explorer.starikov.nomoredomains.work', 'https://movies-explorer.starikov.nomoredomains.work', 'http://api.movies-explorer.strkv.nomoredomains.work', 'https://api.movies-explorer.strkv.nomoredomains.work', 'localhost:3000'],
   allowedHeaders: ['Access-Control-Allow-Credentials', 'Access-Control-Allow-Origin', 'Content-Type'],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   credentials: true,
-}));
+})); */
 
 mongoose.connect(REAL_BASE, {});
+
+app.use(cors());
 
 /* const allowedCors = [
 
