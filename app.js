@@ -17,7 +17,7 @@ const app = express();
 mongoose.connect(REAL_BASE, {});
 
 app.use(cors({
-  origin: ['http://movies-explorer.starikov.nomoredomains.work', 'https://movies-explorer.starikov.nomoredomains.work', 'http://api.movies-explorer.strkv.nomoredomains.work', 'https://api.movies-explorer.strkv.nomoredomains.work', 'localhost:3000'],
+  origin: ['http://movies-explorer.starikov.nomoredomains.work', 'https://movies-explorer.starikov.nomoredomains.work', 'http://api.movies-explorer.strkv.nomoredomains.work', 'https://api.movies-explorer.strkv.nomoredomains.work', 'http://localhost:3000'],
   allowedHeaders: ['Access-Control-Allow-Credentials', 'Access-Control-Allow-Origin', 'Content-Type'],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   credentials: true,
