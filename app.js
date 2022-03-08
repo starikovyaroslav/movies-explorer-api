@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -17,14 +16,12 @@ const app = express();
 
 mongoose.connect(REAL_BASE, {});
 
-/* app.use(cors({
+app.use(cors({
   origin: ['http://movies-explorer.starikov.nomoredomains.work', 'https://movies-explorer.starikov.nomoredomains.work', 'http://api.movies-explorer.strkv.nomoredomains.work', 'https://api.movies-explorer.strkv.nomoredomains.work', 'localhost:3000'],
   allowedHeaders: ['Access-Control-Allow-Credentials', 'Access-Control-Allow-Origin', 'Content-Type'],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   credentials: true,
-})); */
-
-app.use(cors());
+}));
 
 app.use(requestLogger);
 app.use(limiter);
