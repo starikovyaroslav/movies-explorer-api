@@ -10,7 +10,7 @@ const movieSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  movieId: {
+  id: {
     type: Number,
     ref: 'movie',
     required: true,

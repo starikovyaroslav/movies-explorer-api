@@ -12,7 +12,7 @@ const getMovies = (req, res, next) => {
 const createMovie = (req, res, next) => {
   const owner = req.user._id;
   const {
-    movieId,
+    id,
     country,
     director,
     duration,
@@ -26,7 +26,7 @@ const createMovie = (req, res, next) => {
   } = req.body;
 
   Movie.create({
-    movieId,
+    id,
     country,
     director,
     duration,

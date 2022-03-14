@@ -39,7 +39,7 @@ const loginValidation = celebrate({
 
 const movieValidation = celebrate({
   body: Joi.object().keys({
-    movieId: Joi.number().integer().required(),
+    id: Joi.number().integer().required(),
     country: Joi.string().required(),
     director: Joi.string().required(),
     duration: Joi.number().required(),
