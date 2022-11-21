@@ -25,7 +25,7 @@ const app = express();
 mongoose.connect(REAL_BASE, {});
 
 app.use(cors({
-  origin: ['https://movies-explorers-frontend.herokuapp.com'],
+  origin: 'https://movies-explorers-frontend.herokuapp.com',
   allowedHeaders: ['Access-Control-Allow-Credentials', 'Access-Control-Allow-Origin', 'Content-Type'],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   credentials: true,
