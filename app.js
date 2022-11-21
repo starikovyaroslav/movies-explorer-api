@@ -24,9 +24,13 @@ const app = express();
 
 mongoose.connect(REAL_BASE, {});
 
-app.options('*', cors());
+app.options('*', cors({
+  origin: 'https://movies-explorers-frontend.herokuapp.com',
+  credentials: true,
+}));
+
 app.use(cors({
-  origin: '*',
+  origin: 'https://movies-explorers-frontend.herokuapp.com',
   credentials: true,
 }));
 
