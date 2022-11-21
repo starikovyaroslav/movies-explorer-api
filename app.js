@@ -24,7 +24,6 @@ const app = express();
 
 mongoose.connect(REAL_BASE, {});
 
-
 app.use(cors());
 
 /* const allowedCors = [
